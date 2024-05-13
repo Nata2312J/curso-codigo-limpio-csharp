@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace ToDo
 {
     internal class Program
     {
-        public static List<string> TaskList { get; set; }//Nombramiento 
+        //Nueva funcion de C# que me permite darle valores a los metodos ahi mismo. 
+        // En este caso hace que no me muestre error porque la variable este vacia al comenzar 
+        public static List<string> TaskList { get; set; } =new List<string>();  //Nombramiento 
 
         static void Main(string[] args)
         { 
@@ -14,7 +14,7 @@ namespace ToDo
             //Console.WriteLine(s);
 
 
-            TaskList = new List<string>();
+           // TaskList = new List<string>();
             int mainMenuVariable = 0;
             do
             {
@@ -40,7 +40,7 @@ namespace ToDo
         public static void ShowTaskList(){
              Console.WriteLine("----------------------------------------");
              var indexTask=0; 
-             TaskList.ForEach(p=> Console.WriteLine(++indexTask + ". " + p)); 
+             TaskList.ForEach(p=> Console.WriteLine($"{++indexTask} . {p}")); 
              Console.WriteLine("----------------------------------------");
                
         }
@@ -71,7 +71,7 @@ namespace ToDo
                 if(indexToRemove>(TaskList.Count -1) || indexToRemove<0)
                 {
                  Console.WriteLine("Numero ingresado no valido"); 
-                 
+
                 }else{
 
                 
@@ -79,7 +79,7 @@ namespace ToDo
                 {
                         //string task = TaskList[indexToRemove]; No era necesario, principio KISS
                         TaskList.RemoveAt(indexToRemove);
-                        Console.WriteLine("Tarea " + TaskList[indexToRemove] + " eliminada");
+                        Console.WriteLine($"Tarea {TaskList[indexToRemove]} eliminada");
                     
                 }
                 }
@@ -108,13 +108,13 @@ namespace ToDo
 
         public static void ShowMenuTaskList()
         {
-            if (TaskList == null || TaskList.Count == 0)
+            if (TaskList?.Count>0)
             {
-                Console.WriteLine("No hay tareas por realizar");
+                ShowTaskList(); 
             } 
             else
             {
-               ShowTaskList(); 
+               Console.WriteLine("No hay tareas por realizar");
             }
         }
     }

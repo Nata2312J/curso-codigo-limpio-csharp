@@ -1,14 +1,11 @@
 ﻿
-namespace ToDo
-{
-    internal class Program
-    {
+ 
+
+    
         //Nueva funcion de C# que me permite darle valores a los metodos ahi mismo. 
         // En este caso hace que no me muestre error porque la variable este vacia al comenzar 
-        public static List<string> TaskList { get; set; } =new List<string>();  //Nombramiento 
-
-        static void Main(string[] args)
-        { 
+        List<string> TaskList =new List<string>();  //Nombramiento 
+ 
            //  string s="This is my string"; 
            // s.Replace("this","my string now"); 
             //Console.WriteLine(s);
@@ -32,19 +29,19 @@ namespace ToDo
                     ShowMenuTaskList();
                 }
             } while ((EnumMenu)mainMenuVariable != EnumMenu.Exit);
-        }
+        
         /// <summary>
         /// Show the main menu 
         /// </summary>
         /// <returns>Returns option indicated by user</returns>
-        public static void ShowTaskList(){
+         void ShowTaskList(){
              Console.WriteLine("----------------------------------------");
              var indexTask=0; 
              TaskList.ForEach(p=> Console.WriteLine($"{++indexTask} . {p}")); 
              Console.WriteLine("----------------------------------------");
                
         }
-        public static int ShowMainMenu()
+         int ShowMainMenu()
         {
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("Ingrese la opción a realizar: ");
@@ -58,7 +55,7 @@ namespace ToDo
             return Convert.ToInt32(line);
         }
 
-        public static void ShowMenuRemove()
+         void ShowMenuRemove()
         {
             try
             {
@@ -91,7 +88,7 @@ namespace ToDo
             }
         }
 
-        public static void ShowMenuAdd()
+         void ShowMenuAdd()
         {
             try
             {
@@ -106,7 +103,7 @@ namespace ToDo
             }
         }
 
-        public static void ShowMenuTaskList()
+         void ShowMenuTaskList()
         {
             if (TaskList?.Count>0)
             {
@@ -117,11 +114,11 @@ namespace ToDo
                Console.WriteLine("No hay tareas por realizar");
             }
         }
-    }
-    public enum EnumMenu{
+    
+     enum EnumMenu{
         Add=1,
         Remove=2,
         List=3,
         Exit=4
     }
-}
+
